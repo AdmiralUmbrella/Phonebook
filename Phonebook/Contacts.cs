@@ -91,8 +91,7 @@ namespace Phonebook
 
         public override string ToString()
         {
-            return String.Format("{1} {2}: {3} {4}", 
-                this.name, this.lastname, this.phone, this.email);
+            return ($"{this.name}      {this.lastname}      {this.phone}            {this.email}\n");
         }
 
         public override int GetHashCode()

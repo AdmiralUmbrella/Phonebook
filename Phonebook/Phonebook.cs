@@ -89,11 +89,11 @@ namespace Phonebook
         {
             if (x == LOAD_CONTACTS_FILE)
             {
-
+                LoadContactsFile();
             }
             else if(x == SHOW_CONTACTS)
             {
-
+                ShowConctacts();
             }
             else if (x == ADD_CONTACTS)
             {
@@ -101,15 +101,15 @@ namespace Phonebook
             }
             else if (x == EDIT_CONTACTS)
             {
-
+                EditContacts();
             }
             else if (x == MERGE_CONTACTS)
             {
-
+                MergeContacts();
             }
             else if (x == SAVE_CONTACTS_FILE)
             {
-
+                SaveContactsFile();
             }
         }
 
@@ -120,13 +120,48 @@ namespace Phonebook
 
         public void ShowConctacts()
         {
-            return ;
+            if (cnts.Count == 0)
+            {
+                Console.Clear();
+                Console.WriteLine("There are no contacts in the phonebook yet.\n\nInput any key to go back to the main menu.");
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                Console.Clear();
+
+                Console.SetCursorPosition(0, 0);
+                Console.WriteLine($"Currently, there are {cnts.Count} contacts on your phonebook\n");
+
+                Console.SetCursorPosition(12, 2);
+                Console.WriteLine("NAME");
+
+                Console.SetCursorPosition(25, 2);
+                Console.WriteLine("LAST NAME");
+
+                Console.SetCursorPosition(39, 2);
+                Console.WriteLine("PHONE");
+
+                Console.SetCursorPosition(42, 2);
+                Console.WriteLine("E-MAIL");
+
+
+                for (int i = 0; i < cnts.Count; i++)
+                {
+                    Console.WriteLine($"Contact #{cnts.IndexOf(cnts[i])}:");
+                }
+
+                Console.ReadKey();
+
+            }
+            
         }
 
         public void AddContacts()
         {
             Console.Clear();
-            Contacts contacts = new Contacts(null,null,null,null);
+            Contacts contacts = new Contacts(null,null,null,null); //Had to create a null contact because is the only way I could figure on adding it to the list<cnts>. I don't know if this is the best way to perform this.
 
             Console.SetCursorPosition(4, 2);
             Console.WriteLine("NAME");
